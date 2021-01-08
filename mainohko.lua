@@ -1,68 +1,70 @@
 function t_damage()
     while true do
         Wait(0)
-        if PedGetWhoHitMeLast(authTable) then
-         return
-        elseif not PedGetWhoHitMeLast(authTable) and PedIsHit(gPlayer,1,500) then
+		if PedIsHit(gPlayer,1,500) and not checkTable(PedGetFaction(PedGetWhoHitMeLast(gPlayer))) then
             PedApplyDamage(gPlayer,PlayerGetHealth()+1)
-        repeat
-            Wait(0)
-        until not PedIsHit(gPlayer,1,500)
-        end
+			repeat
+				Wait(0)
+			until not PedIsHit(gPlayer,1,500)
+		end
     end
 end
 
+function checkTable(faction)
+	for _, value in ipairs(authTable) do
+		if tostring(value) == tostring(faction) then
+			return true
+		end
+	end
+	return false
+end 	
+
 --[[DEBUG - If the player is alive and not being hit, pressed this button combo will kill you insantly]]
-function t_debug()
+--[[function t_debug()
 while true do
     Wait(0)
         if IsButtonPressed(10,0) and IsButtonPressed(14,0) and IsButtonPressed(8,0) then --lt leftstick b
              PedApplyDamage(gPlayer,PlayerGetHealth()+1)
         end
     end
-end
+end]]
+
+--[[function t_gym()
+local thread
+    while true do
+        if MissionActiveSpecific("5_04") then
+            if thread then
+                TerminateThread(thread)
+                thread = nil
+            end
+        elseif not thread then
+        thread = CreateThread("t_damage")
+        end
+        Wait(0)
+    end
+end]]
     
---[[THREAD CREATION]]
+--[[THREAD ACTIVITY]]
 function main()
-    CreateThread("t_damage")
-    CreateThread("t_debug")
+    local thread
+    while true do
+        if MissionActiveSpecific("5_04") then
+            if thread then
+                TerminateThread(thread)
+                thread = nil
+            end
+        elseif not thread then
+            thread = CreateThread("t_damage")
+            --CreateThread("t_debug")
+        end
+        --TextPrintString("thread: "..(thread and "active" or "disabled"),0,2)
+        Wait(0)
+    end
 end
     
 --[[TABLE]]
 authTable = {
-    "49",--prefect
-    "50",--prefect
-    "51",--prefect
-    "52",--prefect
-    "53",--teacher
-    "54",--teacher
-    "55",--teacher
-    "56",--teacher
-    "57",--teacher
-    "58",--teacher
-    "59",--teacher
-    "60",--teacher
-    "61",--teacher
-    "62",--teacher
-    "63",--teacher
-    "64",--teacher
-    "65",--teacher
-    "106",--teacher
-    "126",--teacher
-    "129",--teacher
-    "151",--teacher
-    "221",--teacher
-    "229",--teacher
-    "248",--teacher
-    "249",--teacher
-    "83",--cop
-    "97",--cop
-    "234",--cop
-    "238",--cop
-    "46", --gurney
+    "0",--prefect
+    "7",--police
+    "8"--teacher
 }
-
---[[files used:
-linuxohko.lua
-STimeCycle.lua
-(named 1hp.lur in files)]]
