@@ -68,3 +68,12 @@ authTable = {
     "7",--police
     "8"--teacher
 }
+
+
+--[[
+amzy (myself) - Main Project Lead and Developer
+
+LohaTronsRS - Co-Developer and Inspiration/Support
+
+Derpy54320 - Code Fixing upon hard times
+]]
