@@ -12,7 +12,7 @@ end
 
 function checkTable(faction)
 	for _, value in ipairs(authTable) do
-		if tostring(value) == tostring(faction) then
+		if value == faction then
 			return true
 		end
 	end
@@ -29,20 +29,6 @@ while true do
     end
 end]]
 
---[[function t_gym()
-local thread
-    while true do
-        if MissionActiveSpecific("5_04") then
-            if thread then
-                TerminateThread(thread)
-                thread = nil
-            end
-        elseif not thread then
-        thread = CreateThread("t_damage")
-        end
-        Wait(0)
-    end
-end]]
     
 --[[THREAD ACTIVITY]]
 function main()
@@ -64,9 +50,9 @@ end
     
 --[[TABLE]]
 authTable = {
-    "0",--prefect
-    "7",--police
-    "8"--teacher
+    0,--prefect
+    7,--police
+    8--teacher
 }
 
 
@@ -75,5 +61,5 @@ amzy (myself) - Main Project Lead and Developer
 
 LohaTronsRS - Co-Developer and Inspiration/Support
 
-Derpy54320 - Code Fixing upon hard times
+Derpy54320 - Code Suggestion
 ]]
