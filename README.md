@@ -1,10 +1,13 @@
 # OneHitKO
 A One Hit KO mod for Bully: Scholarship Edition PC
 
+This mod has a public release and is considered completed! 
+Fixes and patches to it may be added in future should anything be discovered to be bugging out! 
 
-This mod is currently in Beta, and is intended for a small group of Bully Speedrunners to be my guinea pigs in testing. 
+Gym is Burning softlocked previously, so we have removed that disabled OHKO for it. 
 
-It will be updated frequently as I make optimisations.
-Luckily, something like this is very easy and very simple. 
+Thanks to: 
 
-The mod is probably 80% how I want it right now... still the code is available for anyone who wants to look at how my brain approaches LUA.
+LohaTronsRS - Co-Developer & Support
+
+Derpy54320 - Code-Overview and Fix Direction
