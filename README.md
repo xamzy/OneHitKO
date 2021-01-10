@@ -7,23 +7,23 @@ Gym is Burning softlocked previously, so we have disabled the script for that mi
 
 
 # Damage Determinations:
-i.    Being Hit, Kicked, or grappled by a Ped.
+i.     Being Hit, Kicked, or grappled by a Ped.
 
-ii.   Being Shot with a Projectile.
+ii.    Being Shot with a Projectile.
 
-iii.  Crashing into a wall with a bike.
+iii.   Crashing into a wall with a bike.
 
-iv.   Being hit by ambient weapons.
+iv.    Being hit by ambient weapons.
 
-v.    Shooting someone with a slingshot while in close blowback distance.
+v.     Shooting someone with a slingshot while in close blowback distance.
 
 
 # Damage Ignorations :
-i.    Crashing into a wall with a Skateboard.
+i.     Crashing into a wall with a Skateboard.
 
-ii.   Being grappled by authority.
+ii.    Being grappled by authority.
 
-iii.  Fall Damage.
+iii.   Fall Damage.
 
 
 # Thanks to: 
