@@ -18,7 +18,7 @@ iv.    Being hit by ambient weapons.
 v.     Shooting someone with a slingshot while in close blowback distance.
 
 
-# Damage Ignorations :
+# Damage Ignorations:
 i.     Crashing into a wall with a Skateboard.
 
 ii.    Being grappled by authority.
@@ -29,4 +29,3 @@ iii.   Fall Damage.
 # Thanks to: 
 LohaTronsRS - Co-Developer & Support
 
-Derpy54320 - Code Suggestion
