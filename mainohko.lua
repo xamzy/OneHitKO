@@ -60,6 +60,4 @@ authTable = {
 amzy (myself) - Main Project Lead and Developer
 
 LohaTronsRS - Co-Developer and Inspiration/Support
-
-Derpy54320 - Code Suggestion
 ]]
