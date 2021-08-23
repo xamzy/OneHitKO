@@ -1,8 +1,14 @@
 function t_damage()
     while true do
         Wait(0)
+		 
+		--if the Player is hit by another Ped and it's not a Ped Type in the authority Table specified in "checkTable" function then...
 		if PedIsHit(gPlayer,1,500) and not checkTable(PedGetFaction(PedGetWhoHitMeLast(gPlayer))) then
+			
+		--...Apply Damage Points to player of their current health +1
             PedApplyDamage(gPlayer,PlayerGetHealth()+1)
+		
+		--repeats a wait, so it doesn't keep trying to kill you until you're no longer being counted as "hit"
 			repeat
 				Wait(0)
 			until not PedIsHit(gPlayer,1,500)
@@ -10,11 +16,18 @@ function t_damage()
     end
 end
 
+
 function checkTable(faction)
+	
+		--for the values in authTable function, check...
 	for _, value in ipairs(authTable) do
+		
+		--if the value is equal to the factions listed in the authTable, and if yes - return true.
 		if value == faction then
 			return true
 		end
+		
+		--otherwise return false.
 	end
 	return false
 end 	
@@ -32,13 +45,20 @@ end]]
     
 --[[THREAD ACTIVITY]]
 function main()
+	--names thread
     local thread
+	
+	--while this function is true do...
     while true do
+		
+	--if "Gym Is Burning" is active, then terminate the thread handling OHKO, setting it to nil
         if MissionActiveSpecific("5_04") then
             if thread then
                 TerminateThread(thread)
                 thread = nil
             end
+			
+	--else, if the thread doesn't exist, and you're not in Gym Is Burning, then create the thread, relating it to OHKO's specific damage function.		
         elseif not thread then
             thread = CreateThread("t_damage")
             --CreateThread("t_debug")
