@@ -1,74 +1,78 @@
 function t_damage()
-    while true do
+
+    --while this function is active, do the following
+    while true do 
         Wait(0)
-		 
-		--if the Player is hit by another Ped and it's not a Ped Type in the authority Table specified in "checkTable" function then...
-		if PedIsHit(gPlayer,1,500) and not checkTable(PedGetFaction(PedGetWhoHitMeLast(gPlayer))) then
-			
-		--...Apply Damage Points to player of their current health +1
-            PedApplyDamage(gPlayer,PlayerGetHealth()+1)
-		
-		--repeats a wait, so it doesn't keep trying to kill you until you're no longer being counted as "hit"
-			repeat
-				Wait(0)
-			until not PedIsHit(gPlayer,1,500)
-		end
+        
+    --if the player is hit, but the faction is not in the authority table (to allow busts) then apply the player's health as damage + 1
+    if PedIsHit(gPlayer,1,500) and not checkTable(PedGetFaction(PedGetWhoHitMeLast(gPlayer))) then 
+        PedApplyDamage(gPlayer,PlayerGetHealth()+1)
+
+    --repeat wait until the player is not being registered as hit, to avoid multi-deaths
+    repeat
+        Wait(0)
+    until not PedIsHit(gPlayer,1,500)
+
+    --else, if player has been set the "falling" animation and also taken damage, then apply the players' health as damage + 1
+    elseif node and PlayerGetHealth() < healthvalue then 
+        PedApplyDamage(gPlayer,PlayerGetHealth()+1)
+
+    --repeat wait until the player's health is more than the health value set at Load, to avoid multi deaths.
+    repeat
+        Wait(0)
+    until PlayerGetHealth() >= healthvalue
     end
+ end
 end
 
 
 function checkTable(faction)
-	
-		--for the values in authTable function, check...
+
+    --for the useless indexable value in the authority table..
 	for _, value in ipairs(authTable) do
-		
-		--if the value is equal to the factions listed in the authTable, and if yes - return true.
+
+        --check if the value of the faction is equal to the faction value in the auth table; if yes, return true and allow busting
 		if value == faction then
 			return true
 		end
-		
-		--otherwise return false.
 	end
+
+    --otherwise return false and allow damage
 	return false
 end 	
-
---[[DEBUG - If the player is alive and not being hit, pressed this button combo will kill you insantly]]
---[[function t_debug()
-while true do
-    Wait(0)
-        if IsButtonPressed(10,0) and IsButtonPressed(14,0) and IsButtonPressed(8,0) then --lt leftstick b
-             PedApplyDamage(gPlayer,PlayerGetHealth()+1)
-        end
-    end
-end]]
-
     
---[[THREAD ACTIVITY]]
+
 function main()
-	--names thread
+
+    --validates thread of t_damage() 
     local thread
-	
-	--while this function is true do...
+
+    --stores the current health value in a variable upon Load
+    healthvalue = PlayerGetHealth()
+
+    --sets a name for this action node anim of falling.
+    node = PedSetActionNode(gPlayer,"/Global/Player/JumpActions/Jump/Falling/Fall/Falling","Act/Player.act") --PedSetActionNode(gPlayer,"/Global/Player/JumpActions/Jump/Falling","Act/Player.act") -- both of these work, if the one i'm using starts bugging out, i'll swap it. just let me know.
     while true do
-		
-	--if "Gym Is Burning" is active, then terminate the thread handling OHKO, setting it to nil
+
+    --if Gym Is Burning is the currently active mission, and the thread of t_damage() is active...
         if MissionActiveSpecific("5_04") then
             if thread then
+
+    --terminate the thread and set its value to nil [due to a bug with the mission.]
                 TerminateThread(thread)
                 thread = nil
             end
-			
-	--else, if the thread doesn't exist, and you're not in Gym Is Burning, then create the thread, relating it to OHKO's specific damage function.		
+
+    --else, if the thread is not running and the player is NOT in Gym Is Burning, then name the thread and recreate it.
         elseif not thread then
             thread = CreateThread("t_damage")
-            --CreateThread("t_debug")
         end
         --TextPrintString("thread: "..(thread and "active" or "disabled"),0,2)
         Wait(0)
     end
 end
     
---[[TABLE]]
+
 authTable = {
     0,--prefect
     7,--police
