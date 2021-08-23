@@ -31,7 +31,7 @@ function checkTable(faction)
     --for the useless indexable value in the authority table..
 	for _, value in ipairs(authTable) do
 
-        --check if the value of the faction is equal to the faction value in the auth table; if yes, return true and allow busting
+    --check if the value of the faction is equal to the faction value in the auth table; if yes, return true and allow busting
 		if value == faction then
 			return true
 		end
@@ -67,7 +67,7 @@ function main()
         elseif not thread then
             thread = CreateThread("t_damage")
         end
-        --TextPrintString("thread: "..(thread and "active" or "disabled"),0,2)
+    --TextPrintString("thread: "..(thread and "active" or "disabled"),0,2)
         Wait(0)
     end
 end
