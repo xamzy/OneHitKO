@@ -28,4 +28,4 @@ i.    Being grappled by authority.
 
 
 # Thanks to: 
-LohaTronsRS - Co-Developer & Support
+LohaTronsRS - Code Support
