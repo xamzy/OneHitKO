@@ -21,6 +21,16 @@ function t_damage()
     repeat
         Wait(0)
     until PlayerGetHealth() >= healthvalue
+
+    --else, if the player has gained more health than value set at load, check if that's the case, and if so, set their health to the healthvalue checked on load.
+    elseif PlayerGetHealth() > healthvalue then
+        PlayerSetHealth(healthvalue)
+
+    --repeat wait until the player's health is equal to the health value set at load, to avoid multi deaths.
+    repeat
+        Wait(0)
+    until PlayerGetHealth() == healthvalue
+
     end
  end
 end
@@ -83,5 +93,5 @@ authTable = {
 --[[
 amzy (myself) - Main Project Lead and Developer
 
-LohaTronsRS - Co-Developer and Inspiration/Support
+LohaTronsRS - Code Support
 ]]
