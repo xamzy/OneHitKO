@@ -26,6 +26,12 @@ vii.     Shooting someone with a slingshot while in close blowback distance.
 i.    Being grappled by authority.
 
 
+# Currently Disabled Missions: 
+i.    Gym Is Burning (This is unfixable at the current time)
+
+ii.   Prep Challenge (This will be fixed in the next release)
+
+
 
 # Thanks to: 
 LohaTronsRS - Code Support
