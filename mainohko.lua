@@ -64,11 +64,11 @@ function main()
     node = PedSetActionNode(gPlayer,"/Global/Player/JumpActions/Jump/Falling/Fall/Falling","Act/Player.act") --PedSetActionNode(gPlayer,"/Global/Player/JumpActions/Jump/Falling","Act/Player.act") -- both of these work, if the one i'm using starts bugging out, i'll swap it. just let me know.
     while true do
 
-    --if Gym Is Burning is the currently active mission, and the thread of t_damage() is active...
-        if MissionActiveSpecific("5_04") then
+    --if Gym Is Burning is the currently active mission, and the thread of t_damage() is active... [includes prep challenge, until i fix, because it doesn't function correctly]
+        if MissionActiveSpecific("5_04") or MissionActiveSpecific("3_R09_P3") then
             if thread then
 
-    --terminate the thread and set its value to nil [due to a bug with the mission.]
+    --terminate the thread and set its value to nil [due to a bug with the mission.[GIB]]
                 TerminateThread(thread)
                 thread = nil
             end
