@@ -1,9 +1,8 @@
 # OneHitKO
 A One Hit KO mod for Bully: Scholarship Edition PC
 
-This mod has a public release and is considered completed! 
-Fixes and patches to it may be added in future should anything be discovered to be bugging out! 
-Gym is Burning softlocked previously, so we have disabled the script for that mission. 
+This mod has a public release and is considered complete in terms of functionality! 
+Fixes and patches to it may be added in future should anything be discovered to be bugging out!  
 
 
 # Damage Determinations:
