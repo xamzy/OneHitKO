@@ -34,6 +34,6 @@ ii.   Prep Challenge (This will be fixed in the next release)
 # Thanks to: 
 LohaTronsRS - Code Support
 
-#Recommendation: 
+# Recommendation: 
 If you'd like to see more mods, that aren't just by me, consider stopping by our Discord: 
 http://bullymodding.xyz/discord
